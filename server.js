@@ -1,6 +1,7 @@
 const express = require ("express");
 const cors = require("cors");
 const config = require("./app/config");
+const setupContactRoutes = require("./app/routes/contact.routes");
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true}));
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to contact book application."});
 });
+
+setupContactRoutes(app);
 
 // set port, listen for requests
 const PORT = config.app.port;
